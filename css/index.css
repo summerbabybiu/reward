@@ -1,0 +1,11 @@
+body { position: relative; margin: 0; }
+body .main-body { width: 100%; padding-top: 56.25%; height: 0; }
+body .main-body .main-content { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: url("../imgs/bg.jpg") no-repeat center top; background-size: 100% auto; }
+
+#lottery { position: relative; width: 80%; margin: 4% auto 0; }
+#lottery .the-area { position: relative; width: 100%; padding-top: 60%; height: 0; }
+#lottery .the-area table { position: absolute; width: 100%; height: 100%; top: 0; left: 0; border-collapse: collapse; }
+#lottery .the-area table tr { height: 33%; }
+#lottery .the-area table tr td { width: 20%; text-align: center; vertical-align: middle; background-color: #ccc; font-size: 24px; color: #333; border: 2px solid transparent; }
+#lottery .the-area table tr td.active { border: 2px solid yellow; }
+#lottery .the-area table tr td a { width: 150px; height: 150px; line-height: 150px; display: block; text-decoration: none; }
