@@ -18,16 +18,16 @@
                 <td class="num">{{index+1}}</td>
                 <td class="gift-name">{{gift['name']}}</td>
                 <td class="leave-num">
-                    <input type="number" v-bind:class="'input'+index" readOnly= true v-bind:value="gift['leaveNum']"  />
-                    <button v-bind:class="'modify'+index" v-bind:data-id='index' v-on:click="elementHide(index)">修改</button>
-                    <button v-bind:class="'sure'+index" v-bind:data-id='index' v-show="false" v-on:click="saveNum(index)">确定</button>
+                    <input type="number" v-bind:class="'input'+index" v-bind:readOnly="!modifyState[index]" v-bind:value="gift['leaveNum']"  />
+                    <button v-bind:class="'modify'+index" v-bind:data-id='index' v-show="!modifyState[index]" v-on:click="elementHide(index)">修改</button>
+                    <button v-bind:class="'sure'+index" v-bind:data-id='index' v-show="modifyState[index]" v-on:click="saveNum(index)">确定</button>
                 </td>
-                <td class="winning-rate">{{gift['winningRate']}}</td>
+                <td class="winning-rate">{{gift['winningRate'].toFixed(2)}}</td>
                 <td class="total-num">{{gift['fafangNum']}}</td>
             </tr>
         </table>
         <p>所有总量：
-            <span class="all-gift-num"></span>
+            <span class="all-gift-num">{{totalGiftNum}}</span>
         </p>
     </div>
 

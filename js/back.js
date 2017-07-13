@@ -18,30 +18,45 @@ var back = new Vue({
             {'name':'小波利（粉）','leaveNum': 0, 'fafangNum': 0, 'winningRate': 0},
             {'name':'恶魔招财猫','leaveNum': 0, 'fafangNum': 0, 'winningRate': 0},
         ],
+        modifyState: [
+            false,false,false,false,false,false,false,false,false,false,false,false 
+        ]
     },
     methods: {
-        elementHide: function (ele) {
-            var targetInput =  $('.content-tr .input'+ele)[0];
-            var targetModify =  $('.content-tr .modify'+ele)[0];
-            var targetSure =  $('.content-tr .sure'+ele)[0];
-            targetInput.readOnly=false;
-            targetModify.style.display = "none";
-            targetSure.style.display = "";
+        elementHide: function (index) {
+            this.modifyState[index] = true;
+            this.$forceUpdate();
         },
         saveNum: function (inx) {
             console.log(back.gifts[inx]['leaveNum']);
             var targetInput =  $('.content-tr .input'+inx)[0];
-            console.log(targetInput.value,back.gifts[inx]['fafangNum']);
-
             if (targetInput.value !== ''){
-                back.gifts[inx]['fafangNum'] = targetInput.value - back.gifts[inx]['leaveNum'] +back.gifts[inx]['fafangNum'];
-                back.gifts[inx]['leaveNum'] = targetInput.value;
-
-
-
+                var inputValue = parseInt(targetInput.value);
+                if (inputValue < 0) { inputValue = 0;}
+                back.gifts[inx]['leaveNum'] = inputValue;
             } else {
                 alert('请填写库存');
             }
+            this.calculateWinRate();
+            localStorage.gifts = JSON.stringify(back.gifts);
+            this.modifyState[inx] = false;
+            this.$forceUpdate();
+        },
+        calculateWinRate: function () {
+            var total = this.totalGiftNum;
+            this.gifts.forEach(function(element) {
+                 element["winningRate"] =  element["leaveNum"] / total;
+            });
+        }
+    },
+    computed: {
+        totalGiftNum: function () {
+            return this.gifts.reduce(function (pre, current, index, arr) {
+                if (pre instanceof Object) {
+                    return pre["leaveNum"] + current["leaveNum"];
+                }
+                return pre + current["leaveNum"];
+            });
         }
     }
 });
