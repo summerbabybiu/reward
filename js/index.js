@@ -1,4 +1,4 @@
-var all_array =[1,2,1,1,1,1,1,1,1,1,1,3];
+var all_array =[1,0,0,0,0,0,0,0,0,0,0,0];
 function guess(myArray) {
     var sum = 0;
     var fanwei = [];
@@ -68,6 +68,9 @@ function roll(){
     lottery.roll();
     if (lottery.times > lottery.cycle+10 && lottery.prize==lottery.index) {
         clearTimeout(lottery.timer);
+        $('.tip-pop .gift-pic').addClass('gift-pic-'+lottery.prize);
+        $('.tip-pop .gift-detail').html($('.lottery-unit-'+lottery.prize).html());
+        $('.tip-pop').show();
         lottery.prize=-1;
         lottery.times=0;
         click=false;
@@ -88,7 +91,7 @@ function roll(){
         if (lottery.speed<40) {
             lottery.speed=40;
         };
-//            console.log(lottery.times+'^^^^^^'+lottery.speed+'^^^^^^^'+lottery.prize);
+           console.log(lottery.times+'^^^^^^'+lottery.speed+'^^^^^^^'+lottery.prize);
         lottery.timer = setTimeout(roll,lottery.speed);
     }
     return false;
@@ -105,6 +108,7 @@ window.onload=function(){
             }else{
                 if(all_array[0] ==0 && guess(all_array) ==0 ) {
                     console.log('end');
+                    $('.sorry-pop').show();
                     return false;
                 } else  {
                     lottery.speed=100;
@@ -116,5 +120,16 @@ window.onload=function(){
         }
     })
 };
+
+$('.sorry-pop .sure-button').on('click',function () {
+    $('.sorry-pop').hide();
+});
+$('.tip-pop .sure-button').on('click',function () {
+    $('.tip-pop .gift-pic')[0].className = 'gift-pic';
+    $('.tip-pop .gift-detail').html('');
+    $('.tip-pop').hide();
+
+});
+console.log(localStorage.lastname);
 
 

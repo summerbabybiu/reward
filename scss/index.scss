@@ -2,67 +2,194 @@ body {
     position: relative;
     margin: 0;
     .main-body {
-        width: 100%;
-        padding-top: 56.25%;
-        height: 0;
-
-        .main-content {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: url("../imgs/bg.jpg") no-repeat center top;
-            background-size: 100% auto;
-        }
+        position: relative;
+        height: 1080px;
     }
 }
 
 
 #lottery {
     position: relative;
-    width: 80%;
-    margin: 4% auto 0;
+    width: 100%;
+    height: 100%;
+    background: url("../imgs/bg.jpg") no-repeat center top;
+    background-size: 1920px 1080px;
 
-    .the-area {
-        position: relative;
-        width: 100%;
-        padding-top: 60%;
-        height: 0;
+    table {
+        position: absolute;
+        left: 50%;
+        margin-left: -777px;
+        top: 50%;
+        margin-top: -466px;
+        border-spacing: 8px;
 
-        table {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border-collapse: collapse;
+        tr {
+            td.lottery-unit {
+                position: relative;
+                width: 299px;
+                height: 299px;
+                text-align: center;
+                background: url("../imgs/unchoose.png") no-repeat center top;
+                background-size: 299px;
 
-            tr {
-                height: 33%;
-                td {
-                    width: 20%;
+                &.active {
+                    background: url("../imgs/choose.png") no-repeat center top;
+                    background-size: 299px;
+                }
+
+                .gift-text {
+                    position: absolute;
+                    width: 100%;
                     text-align: center;
-                    vertical-align: middle;
-                    background-color: #ccc;
-                    font-size: 24px;
-                    color: #333;
-                    border: 2px solid transparent;
+                    font-size: 28px;
+                    line-height: 36px;
+                    color: pink;
+                    bottom: 35px;
+                }
+            }
 
-                    &.active {
-                        border: 2px solid yellow;
+            @for $i from 0 through 11 {
+                .lottery-unit-#{$i} {
+                    .gift-img {
+                        position: absolute;
+                        width: 265px;
+                        height: 265px;
+                        left: 50%;
+                        margin-left: -132.5px;
+                        top: 0;
+                        background: url("../imgs/gift/#{$i}.png") no-repeat center;
+                        background-size: 265px;
                     }
+                }
+            }
+        }
+    }
 
-                    a {
-                        width: 150px;
-                        height: 150px;
-                        line-height: 150px;
-                        display: block;
-                        text-decoration: none;
+    .tip-pop {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,0.7);
+        display: none;
+
+        .top-content {
+            position: relative;
+            width: 960px;
+            margin: 0 auto;
+            height: 900px;
+            background: url("../imgs/get.png") no-repeat center top;
+            background-size: 960px;
+
+            .gift-cover {
+                position: absolute;
+                width: 299px;
+                height: 299px;
+                left: 50%;
+                margin-left: -150px;
+                top: 270px;
+                background: url("../imgs/unchoose.png") no-repeat center top;
+                background-size: 299px;
+
+                @for $a from 0 through 11 {
+                    .gift-pic-#{$a} {
+                        position: absolute;
+                        width: 265px;
+                        height: 265px;
+                        left: 50%;
+                        margin-left: -132.5px;
+                        top: 50%;
+                        margin-top: -132.5px;
+                        background: url("../imgs/gift/#{$a}.png") no-repeat center;
+                        background-size: 265px;
                     }
                 }
             }
 
+            .gift-detail {
+                position: absolute;
+                width: 700px;
+                height: 86px;
+                left: 50%;
+                margin-left: -350px;
+                top: 620px;
+                background:-moz-linear-gradient(left,rgba(0,0,0,0),#000,rgba(0,0,0,0));/*Mozilla*/
+                background:-webkit-gradient(linear,0 50%,100% 50%,from(#000),to(rgba(0,0,0,0.5)));/*Old gradient for webkit*/
+                background:-webkit-linear-gradient(left,rgba(0,0,0,0),#000,rgba(0,0,0,0));/*new gradient for Webkit*/
+                background:-o-linear-gradient(left,rgba(0,0,0,0),#000,rgba(0,0,0,0)); /*Opera11*/
+                color: #fff;
+                font-size: 32px;
+                text-align: center;
+                line-height: 86px;
+            }
+
+            .sure-button {
+                position: absolute;
+                width: 302px;
+                height: 96px;
+                left: 50%;
+                margin-left: -151px;
+                top: 750px;
+                background: url("../imgs/button.png") no-repeat center;
+                background-size: 302px;
+                text-align: center;
+                color: #fff;
+                font-size: 32px;
+                line-height: 88px;
+                cursor: pointer;
+            }
+        }
+    }
+
+
+    .sorry-pop {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,0.7);
+        display: none;
+
+        .pop-content {
+            position: relative;
+            width: 526px;
+            margin: 300px auto;
+            height: 420px;
+            background: url("../imgs/sorry.png") no-repeat center top;
+            background-size: 526px;
+
+            .sorry-tip {
+                position: absolute;
+                width: 100%;
+                height: 86px;
+                top: 180px;
+                background:-moz-linear-gradient(left,rgba(0,0,0,0),#000,rgba(0,0,0,0));/*Mozilla*/
+                background:-webkit-gradient(linear,0 50%,100% 50%,from(#000),to(rgba(0,0,0,0.5)));/*Old gradient for webkit*/
+                background:-webkit-linear-gradient(left,rgba(0,0,0,0),#000,rgba(0,0,0,0));/*new gradient for Webkit*/
+                background:-o-linear-gradient(left,rgba(0,0,0,0),#000,rgba(0,0,0,0)); /*Opera11*/
+                color: #fff;
+                font-size: 32px;
+                text-align: center;
+                line-height: 86px;
+            }
+
+            .sure-button {
+                position: absolute;
+                width: 302px;
+                height: 96px;
+                left: 50%;
+                margin-left: -151px;
+                bottom: 0;
+                background: url("../imgs/button.png") no-repeat center;
+                background-size: 302px;
+                text-align: center;
+                color: #fff;
+                font-size: 32px;
+                line-height: 88px;
+                cursor: pointer;
+            }
         }
     }
 }

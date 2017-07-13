@@ -2,38 +2,85 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>九宫格 抽奖转盘演示</title>
+    <title>抽奖演示</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
 
 </head>
 <body>
 <div class="main-body">
-    <div class="main-content">
-        <div id="lottery">
-            <div class="the-area">
-                <table>
-                    <tr>
-                        <td class="lottery-unit lottery-unit-0">1</td>
-                        <td class="lottery-unit lottery-unit-1">2</td>
-                        <td class="lottery-unit lottery-unit-2">3</td>
-                        <td class="lottery-unit lottery-unit-3">4</td>
-                        <td class="lottery-unit lottery-unit-4">5</td>
-                    </tr>
-                    <tr>
-                        <td class="lottery-unit lottery-unit-11">12</td>
-                        <td colspan="3"> <a href="#">开始</a></td>
-                        <td class="lottery-unit lottery-unit-5">6</td>
-                    </tr>
-                    <tr>
-                        <td class="lottery-unit lottery-unit-10">11</td>
-                        <td class="lottery-unit lottery-unit-9">10</td>
-                        <td class="lottery-unit lottery-unit-8">9</td>
-                        <td class="lottery-unit lottery-unit-7">8</td>
-                        <td class="lottery-unit lottery-unit-6">7</td>
-                    </tr>
-                </table>
+    <div id="lottery">
+        <table>
+            <tr>
+                <td class="lottery-unit lottery-unit-0">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">小恶魔零钱包</div>
+                </td>
+                <td class="lottery-unit lottery-unit-1">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">天使波利抱枕</div>
+                </td>
+                <td class="lottery-unit lottery-unit-2">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">小波利（蓝）</div>
+                </td>
+                <td class="lottery-unit lottery-unit-3">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">恶魔猫发箍</div>
+                </td>
+                <td class="lottery-unit lottery-unit-4">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">神秘箱子冰箱贴</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="lottery-unit lottery-unit-11">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">恶魔招财猫</div>
+                </td>
+                <td colspan="3"></td>
+                <td class="lottery-unit lottery-unit-5">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">趴趴猫发箍（黑）</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="lottery-unit lottery-unit-10">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">小波利（粉）</div>
+                </td>
+                <td class="lottery-unit lottery-unit-9">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">小恶魔挂件</div>
+                </td>
+                <td class="lottery-unit lottery-unit-8">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">趴趴猫发箍（黄）</div>
+                </td>
+                <td class="lottery-unit lottery-unit-7">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">沪牌包</div>
+                </td>
+                <td class="lottery-unit lottery-unit-6">
+                    <div class="gift-img"></div>
+                    <div class="gift-text">小波利（黄）</div>
+                </td>
+            </tr>
+        </table>
+        <div class="tip-pop">
+            <div class="top-content">
+                <div class="gift-cover">
+                    <div class="gift-pic"></div>
+                </div>
+                <div class="gift-detail"></div>
+                <div class="sure-button">好的</div>
             </div>
+        </div>
 
+        <div class="sorry-pop">
+            <div class="pop-content">
+                <div class="sorry-tip">周边太火爆，已被抢光</div>
+                <div class="sure-button">好的</div>
+            </div>
         </div>
     </div>
 </div>

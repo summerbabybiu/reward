@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>库存录入</title>
+</head>
+<body>
+    <div class="back-main" id="back">
+        <table>
+            <tr>
+                <th>序号</th>
+                <th>奖品名称</th>
+                <th>当前库存</th>
+                <th>中奖率</th>
+                <th>发放总量</th>
+            </tr>
+            <tr v-for="(gift,index) in gifts" class="content-tr">
+                <td class="num">{{index+1}}</td>
+                <td class="gift-name">{{gift['name']}}</td>
+                <td class="leave-num">
+                    <input type="number" v-bind:class="'input'+index" readOnly= true v-bind:value="gift['leaveNum']"  />
+                    <button v-bind:class="'modify'+index" v-bind:data-id='index' v-on:click="elementHide(index)">修改</button>
+                    <button v-bind:class="'sure'+index" v-bind:data-id='index' v-show="false" v-on:click="saveNum(index)">确定</button>
+                </td>
+                <td class="winning-rate">{{gift['winningRate']}}</td>
+                <td class="total-num">{{gift['fafangNum']}}</td>
+            </tr>
+        </table>
+        <p>所有总量：
+            <span class="all-gift-num"></span>
+        </p>
+    </div>
+
+
+
+
+<script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script src="js/back.js"></script>
+</body>
+</html>
