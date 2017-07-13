@@ -1,4 +1,11 @@
-var all_array =[1,0,0,0,0,0,0,0,0,0,0,0];
+var all_array =[];
+
+if (localStorage.gifts) {
+    all_array = JSON.parse(localStorage.gifts);
+}
+
+console.log(all_array);
+
 function guess(myArray) {
     var sum = 0;
     var fanwei = [];
@@ -6,7 +13,7 @@ function guess(myArray) {
         var theIndex = 0;
 
         myArray.forEach(function (value, index, array) {
-            sum += myArray[index];
+            sum += myArray[index]['leaveNum'];
             fanwei[index] = sum;
         });
         console.log('fanwei'+fanwei);
@@ -80,7 +87,9 @@ function roll(){
         }else if(lottery.times==lottery.cycle) {
             console.log(all_array);
             lottery.prize = guess(all_array);
-            all_array[lottery.prize] -= 1;
+            all_array[lottery.prize]['leaveNum'] -= 1;
+            all_array[lottery.prize]['fafangNum'] += 1;
+            localStorage.gifts = JSON.stringify(all_array);
         }else{
             if (lottery.times > lottery.cycle+10 && ((lottery.prize==0 && lottery.index==11) || lottery.prize==lottery.index+1)) {
                 lottery.speed += 110;
@@ -106,11 +115,18 @@ window.onload=function(){
             if (click) {
                 return false;
             }else{
-                if(all_array[0] ==0 && guess(all_array) ==0 ) {
+                if (all_array.length<=0 ) {
+                    alert("先录数据");
+                    return false;
+                }
+                if(all_array[0]['leaveNum'] ==0 && guess(all_array) ==0 ) {
                     console.log('end');
                     $('.sorry-pop').show();
                     return false;
-                } else  {
+                } else {
+                    if (localStorage.gifts) {
+                        all_array = JSON.parse(localStorage.gifts);
+                    }
                     lottery.speed=100;
                     roll();
                     click=true;
@@ -130,6 +146,4 @@ $('.tip-pop .sure-button').on('click',function () {
     $('.tip-pop').hide();
 
 });
-console.log(localStorage.lastname);
-
 
