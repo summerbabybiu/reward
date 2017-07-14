@@ -92,6 +92,8 @@ function roll(){
             all_array[lottery.prize]['leaveNum'] -= 1;
             all_array[lottery.prize]['fafangNum'] += 1;
             localStorage.gifts = JSON.stringify(all_array);
+            localStorage.mutex = false;
+            console.log("change storage is enabled");
         }else{
             if (lottery.times > lottery.cycle+10 && ((lottery.prize==0 && lottery.index==11) || lottery.prize==lottery.index+1)) {
                 lottery.speed += 110;
@@ -119,6 +121,8 @@ window.onload=function(){
             }else{
                 if (localStorage.gifts) {
                     all_array = JSON.parse(localStorage.gifts);
+                    localStorage.mutex = true;
+                    console.log("change storage is disabled");
                 }
                 if (all_array.length<=0 ) {
                     alert("先录数据");
