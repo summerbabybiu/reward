@@ -117,6 +117,9 @@ window.onload=function(){
     $(document).keypress(function (e) {
         if (e.keyCode == 32){console.log('click'+click)
             if (click) {
+                if($('.tip-pop').css('display') !== 'none') {
+                    $('.tip-pop .sure-button').trigger('click');
+                }
                 return false;
             }else{
                 if (localStorage.gifts) {
@@ -128,12 +131,15 @@ window.onload=function(){
                     alert("先录数据");
                     return false;
                 }
+                if($('.sorry-pop').css('display') !== 'none') {//防止前台抽完，显示补货时，后台录入，需线关闭提示窗
+                    $('.sorry-pop .sure-button').trigger('click');
+                    return false;
+                }
                 if(all_array[0]['leaveNum'] <=0 && guess(all_array) ===0 ) {
                     console.log('end');
                     $('.sorry-pop').show();
                     return false;
                 } else {
-                    $('.sorry-pop').hide();//防止前台抽完，显示补货时，后台录入，需线关闭提示窗
                     lottery.speed=100;
                     roll();
                     return false;
