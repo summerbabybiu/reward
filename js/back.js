@@ -85,4 +85,15 @@ if(localStorage.gifts) {//发放总量
 } else {
     localStorage.gifts = JSON.stringify(back.gifts);
 }
+var lastMutex = localStorage.mutex;
+function checkMutex() {
+    var mutex = localStorage.mutex;
+    console.log("check mutex" + mutex);
+    if (mutex !== lastMutex) {
+        alert("刷新啦");
+        location.reload();
+    }
+    setTimeout(checkMutex, 1000);
+}
 
+setTimeout(checkMutex, 1000);
