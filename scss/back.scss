@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+}
+
+.back-main {
+    position: relative;
+    width: 900px;
+    margin: 50px auto;
+    table {
+        tr {
+            th {
+                color: #333333;
+                font-size: 14px;
+                line-height: 40px;
+            }
+            td {
+                text-align: center;
+                font-size: 14px;
+                color: #5C5C5C;
+                height: 35px;
+                line-height: 35px;
+            }
+
+            .num {
+                width: 80px;
+            }
+            .gift-name {
+                width: 280px;
+            }
+
+            .leave-num {
+                width: 240px;
+                input {
+                    width: 50px;
+                    display: block;
+                    padding: 4px 10px;
+                    font-size: 14px;
+                    line-height: 1.71429;
+                    color: #5c5c5c;
+                    background-color: #fff;
+                    background-image: none;
+                    border: 1px solid #e6e6e6;
+                    border-radius: 5px;
+                    -webkit-transition: border-color ease-in-out 0.3s;
+                    transition: border-color ease-in-out 0.3s;
+                    float: left;
+                    margin-left: 20px;
+                }
+                button {
+                    margin-bottom: 0;
+                    font-weight: normal;
+                    text-align: center;
+                    vertical-align: middle;
+                    -ms-touch-action: manipulation;
+                    touch-action: manipulation;
+                    cursor: pointer;
+                    background-image: none;
+                    border: 1px solid transparent;
+                    white-space: nowrap;
+                    padding: 4px 10px;
+                    font-size: 14px;
+                    line-height: 1.71429;
+                    border-radius: 5px;
+                    float: left;
+                    margin-left: 5px;
+                }
+
+                .modify,.cancel {
+                    color: #888888;
+                    background-color: #fff;
+                    border-color: #e6e6e6;
+
+                    &:hover {
+                        color: #a0a0a0;
+                        background-color: #fff;
+                        border-color: #ebebeb;
+                    }
+                }
+
+                .sure {
+                    color: #fff;
+                    background-color: #ff6600;
+                    border-color: #ff6600;
+                }
+            }
+            .winning-rate {
+                width: 200px;
+            }
+
+            .total-num {
+                width: 200px;
+            }
+        }
+    }
+
+    .total-fafang {
+        width: 200px;
+        float: right;
+        color: #5c5c5c;
+        
+        .all-gift-num {
+            color: #ff6600;
+        }
+    }
+
+    .operate-tip {
+        width: 800px;
+        margin: 0 auto;
+        background-color: #F9F9FB;
+        color: #5c5c5c;
+        padding: 20px 30px;
+        clear: both;
+        border: 1px solid #edf1f1f1;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+}

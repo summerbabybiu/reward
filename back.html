@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>库存录入</title>
+    <link rel="stylesheet" href="css/back.css">
 </head>
 <body>
     <div class="back-main" id="back">
@@ -19,18 +20,31 @@
                 <td class="gift-name">{{gift['name']}}</td>
                 <td class="leave-num">
                     <input type="number" v-bind:class="'input'+index" v-bind:readOnly="!modifyState[index]" v-bind:value="gift['leaveNum']"  />
-                    <button v-bind:class="'modify'+index" v-bind:data-id='index' v-show="!modifyState[index]" v-on:click="elementHide(index)">修改</button>
-                    <button v-bind:class="'sure'+index" v-bind:data-id='index' v-show="modifyState[index]" v-on:click="saveNum(index)">确定</button>
+                    <button class="modify" v-bind:data-id='index' v-show="!modifyState[index]" v-on:click="elementHide(index)">修改</button>
+                    <button class="sure" v-bind:data-id='index' v-show="modifyState[index]" v-on:click="saveNum(index)">确定</button>
+                    <button class="cancel" v-bind:data-id='index' v-show="modifyState[index]" v-on:click="cancelHide(index)">取消</button>
+
                 </td>
-                <td class="winning-rate">{{gift['winningRate'].toFixed(2)}}</td>
+                <td class="winning-rate">{{gift['winningRate']}}%</td>
                 <td class="total-num">{{gift['fafangNum']}}</td>
             </tr>
         </table>
-        <p>所有总量：
-            <span class="all-gift-num">{{totalGiftNum}}</span>
+        <p class="total-fafang">所有总量：
+            <span class="all-gift-num">{{totalFafangNum}}</span>
         </p>
+        <div class="operate-tip">
+            说明：<br>
+            1、当前库存数据可随时调整，手动填写；<br>
+            2、中奖率会随着库存数量的变化而变化（自动显示）；<br>
+            3、发放总量根据中奖结果记录；<br>
+            <p style="color: red">
+                操作步骤；<br>
+                1.先进行后台录入，再进行抽奖。<br>
+                2.前后台操作不可同时进行。<br>
+                3.如需更新库存，要求先刷新后台页面，在再进行后台录入操作。否则可能导致后台滞后数据覆盖真正数据。<br>
+            </p>
+        </div>
     </div>
-
 
 
 

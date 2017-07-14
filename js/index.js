@@ -77,10 +77,12 @@ function roll(){
         clearTimeout(lottery.timer);
         $('.tip-pop .gift-pic').addClass('gift-pic-'+lottery.prize);
         $('.tip-pop .gift-detail').html($('.lottery-unit-'+lottery.prize).html());
-        $('.tip-pop').show();
+        setTimeout(function () {
+            $('.tip-pop').show();
+        },500);
         lottery.prize=-1;
         lottery.times=0;
-        click=false;
+        click=true;
     }else{
         if (lottery.times<lottery.cycle) {
             lottery.speed -= 10;
@@ -106,30 +108,29 @@ function roll(){
     return false;
 }
 
-var click=false;
+var click = false;
 
 window.onload=function(){
     lottery.init('lottery');
     $(document).keypress(function (e) {
-        if (e.keyCode == 32){
+        if (e.keyCode == 32){console.log('click'+click)
             if (click) {
                 return false;
             }else{
+                if (localStorage.gifts) {
+                    all_array = JSON.parse(localStorage.gifts);
+                }
                 if (all_array.length<=0 ) {
                     alert("先录数据");
                     return false;
                 }
-                if(all_array[0]['leaveNum'] ==0 && guess(all_array) ==0 ) {
+                if(all_array[0]['leaveNum'] <=0 && guess(all_array) ===0 ) {
                     console.log('end');
                     $('.sorry-pop').show();
                     return false;
                 } else {
-                    if (localStorage.gifts) {
-                        all_array = JSON.parse(localStorage.gifts);
-                    }
                     lottery.speed=100;
                     roll();
-                    click=true;
                     return false;
                 }
             }
@@ -144,6 +145,6 @@ $('.tip-pop .sure-button').on('click',function () {
     $('.tip-pop .gift-pic')[0].className = 'gift-pic';
     $('.tip-pop .gift-detail').html('');
     $('.tip-pop').hide();
-
+    click = false;
 });
 

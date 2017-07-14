@@ -27,6 +27,11 @@ var back = new Vue({
             this.modifyState[index] = true;
             this.$forceUpdate();
         },
+        cancelHide: function (index) {
+            this.modifyState[index] = false;
+            this.$forceUpdate();
+
+        },
         saveNum: function (inx) {
             console.log(back.gifts[inx]['leaveNum']);
             var targetInput =  $('.content-tr .input'+inx)[0];
@@ -44,8 +49,13 @@ var back = new Vue({
         },
         calculateWinRate: function () {
             var total = this.totalGiftNum;
+
             this.gifts.forEach(function(element) {
-                 element["winningRate"] =  element["leaveNum"] / total;
+                if (total==0) {
+                    element["winningRate"] = 0
+                } else {
+                    element["winningRate"] =  (element["leaveNum"] / total *100).toFixed(2);
+                }
             });
         }
     },
@@ -56,6 +66,14 @@ var back = new Vue({
                     return pre["leaveNum"] + current["leaveNum"];
                 }
                 return pre + current["leaveNum"];
+            });
+        },
+        totalFafangNum: function () {
+            return this.gifts.reduce(function (pre, current, index, arr) {
+                if (pre instanceof Object) {
+                    return pre["fafangNum"] + current["fafangNum"];
+                }
+                return pre + current["fafangNum"];
             });
         }
     }
