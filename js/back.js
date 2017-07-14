@@ -26,11 +26,14 @@ var back = new Vue({
         elementHide: function (index) {
             this.modifyState[index] = true;
             this.$forceUpdate();
+            if(localStorage.gifts) {//发放总量
+                back.gifts = JSON.parse(localStorage.gifts);
+                this.calculateWinRate;
+            }
         },
         cancelHide: function (index) {
             this.modifyState[index] = false;
             this.$forceUpdate();
-
         },
         saveNum: function (inx) {
             console.log(back.gifts[inx]['leaveNum']);
@@ -85,15 +88,17 @@ if(localStorage.gifts) {//发放总量
 } else {
     localStorage.gifts = JSON.stringify(back.gifts);
 }
-var lastMutex = localStorage.mutex;
-function checkMutex() {
-    var mutex = localStorage.mutex;
-    console.log("check mutex" + mutex);
-    if (mutex !== lastMutex) {
-        alert("刷新啦");
-        location.reload();
-    }
-    setTimeout(checkMutex, 1000);
-}
-
-setTimeout(checkMutex, 1000);
+// var lastMutex = localStorage.mutex;
+// function checkMutex() {
+//     var mutex = localStorage.mutex;
+//     console.log("check mutex" + mutex);
+//     if (mutex !== lastMutex) {
+//         // alert("刷新啦");
+//         location.reload();
+//     }
+//     setTimeout(checkMutex, 1000);
+// }
+//
+//
+// setTimeout(checkMutex, 1000);
+back.calculateWinRate();
