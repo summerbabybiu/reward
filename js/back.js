@@ -28,7 +28,7 @@ var back = new Vue({
             this.$forceUpdate();
             if(localStorage.gifts) {//发放总量
                 back.gifts = JSON.parse(localStorage.gifts);
-                this.calculateWinRate;
+                this.calculateWinRate();
             }
         },
         cancelHide: function (index) {
